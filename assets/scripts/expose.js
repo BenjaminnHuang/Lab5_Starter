@@ -6,12 +6,12 @@ const jsConfetti = new JSConfetti();
 function init() {
   // TODO
   const horns = document.getElementById("horn-select");
-  const myAudio = document.getElementsByClassName("hidden");
+  const myAudio = document.querySelector(".hidden");
 
   horns.addEventListener('change', (event) => {
     const myImg = document.querySelector('img[alt="No image selected"]');
     myImg.src = `assets/images/${event.target.value}.svg`;
-    myAudio.src = `assets/audio/${event.target.value}.mp3`;
+    myAudio.setAttribute('src', `assets/audio/${event.target.value}.mp3`);
   });
 
   const audioVal = document.getElementById("volume");
@@ -37,11 +37,10 @@ function init() {
 
   const soundBtn = document.querySelector("button");
   soundBtn.addEventListener("click", ()=>{
-    const audio = new Audio(myAudio.src);
+    const audio = new Audio(myAudio.getAttribute("src"));
     audio.volume = audioVal.value / 100;
     audio.play();
-    console.log(audio.src);
-    if(audio.src == "http://127.0.0.1:5500/assets/audio/party-horn.mp3"){
+    if(audio.getAttribute('src') == "assets/audio/party-horn.mp3"){
       jsConfetti.addConfetti();
     }
   });
