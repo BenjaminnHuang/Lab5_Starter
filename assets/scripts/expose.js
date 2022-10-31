@@ -1,6 +1,7 @@
 // expose.js
 
 window.addEventListener('DOMContentLoaded', init);
+const jsConfetti = new JSConfetti();ß
 
 function init() {
   // TODO
@@ -41,7 +42,6 @@ function init() {
     audio.play();
     console.log(audio.src);
     if(audio.src == "http://127.0.0.1:5500/assets/audio/party-horn.mp3"){
-      const jsConfetti = new JSConfetti();
       jsConfetti.addConfetti();
     }
   });
